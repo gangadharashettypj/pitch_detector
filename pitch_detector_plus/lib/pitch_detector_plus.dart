@@ -12,17 +12,18 @@ class PitchDetectorPlus {
   final eventChannel = const EventChannel('pitch_detector_event_channel');
 
   Future<String?> getPlatformVersion() async {
-    final version = await PitchDetectorPlatform.instance.getPlatformVersion();
+    final version =
+        await PitchDetectorPlusPlatform.instance.getPlatformVersion();
     return version;
   }
 
   Future<String?> startRecording() async {
-    final status = await PitchDetectorPlatform.instance.startRecording();
+    final status = await PitchDetectorPlusPlatform.instance.startRecording();
     return status;
   }
 
   Future<String?> stopRecording() async {
-    final status = await PitchDetectorPlatform.instance.stopRecording();
+    final status = await PitchDetectorPlusPlatform.instance.stopRecording();
     return status;
   }
 
@@ -34,12 +35,12 @@ class PitchDetectorPlus {
   }
 
   Future<String?> initialize() async {
-    final status = await PitchDetectorPlatform.instance.initialize();
+    final status = await PitchDetectorPlusPlatform.instance.initialize();
     return status;
   }
 
   Future<bool?> isInitialized() async {
-    final status = await PitchDetectorPlatform.instance.isInitialized();
+    final status = await PitchDetectorPlusPlatform.instance.isInitialized();
     return status;
   }
 }

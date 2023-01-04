@@ -1,12 +1,11 @@
 import Flutter
-import UIKit
-import Pitchy
 import Beethoven
-import AVFoundation
+import UIKit
 import EZAudioClone
+import Beethoven
+import Pitchy
 
-
-public class SwiftPitchDetectorPlugin: NSObject, FlutterPlugin {
+public class SwiftPitchDetectorPlusPlugin: NSObject, FlutterPlugin {
     public static var channel: FlutterMethodChannel?
     public static var eventChannel: FlutterEventChannel?
     public var eventSink: FlutterEventSink?
@@ -17,7 +16,7 @@ public class SwiftPitchDetectorPlugin: NSObject, FlutterPlugin {
     public static func register(with registrar: FlutterPluginRegistrar) {
         
         channel = FlutterMethodChannel(name: "pitch_detector", binaryMessenger: registrar.messenger())
-        let instance = SwiftPitchDetectorPlugin()
+        let instance = SwiftPitchDetectorPlusPlugin()
         registrar.addMethodCallDelegate(instance, channel: channel!)
         
         eventChannel = FlutterEventChannel(name: "pitch_detector_event_channel", binaryMessenger: registrar.messenger())
@@ -87,7 +86,7 @@ public class PitchController {
     }
 }
 
-extension SwiftPitchDetectorPlugin: FlutterStreamHandler {
+extension SwiftPitchDetectorPlusPlugin: FlutterStreamHandler {
     public func onListen(withArguments arguments: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {
         eventSink = events
         //        pitchController = PitchController(eventSink: events)
@@ -129,7 +128,7 @@ extension PitchController: PitchEngineDelegate {
 }
 
 
-extension SwiftPitchDetectorPlugin: EZAudioFFTDelegate {
+extension SwiftPitchDetectorPlusPlugin: EZAudioFFTDelegate {
     public func fft(_ fft: EZAudioFFT!, updatedWithFFTData fftData: UnsafeMutablePointer<Float>!, bufferSize: vDSP_Length) {
         let maxFrequency:Float = fft.maxFrequency
         let noteName:String = EZAudioUtilities.noteNameString(
@@ -155,7 +154,7 @@ extension SwiftPitchDetectorPlugin: EZAudioFFTDelegate {
     }
 }
 
-extension SwiftPitchDetectorPlugin: EZMicrophoneDelegate {
+extension SwiftPitchDetectorPlusPlugin: EZMicrophoneDelegate {
     
     func convert(count: Int, data: UnsafePointer<Float>) -> [Float] {
         let buffer = UnsafeBufferPointer(start: data, count: count);

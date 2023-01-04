@@ -1,13 +1,13 @@
 #
 # To learn more about a Podspec see http://guides.cocoapods.org/syntax/podspec.html.
-# Run `pod lib lint pitch_detector.podspec` to validate before publishing.
+# Run `pod lib lint pitch_detector_plus.podspec` to validate before publishing.
 #
 Pod::Spec.new do |s|
-  s.name             = 'pitch_detector'
+  s.name             = 'pitch_detector_plus'
   s.version          = '0.0.1'
-  s.summary          = 'A new Flutter project.'
+  s.summary          = 'A new Flutter plugin project.'
   s.description      = <<-DESC
-A new Flutter project.
+A new Flutter plugin project.
                        DESC
   s.homepage         = 'http://example.com'
   s.license          = { :file => '../LICENSE' }

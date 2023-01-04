@@ -1,10 +1,10 @@
 import Cocoa
 import FlutterMacOS
 
-public class PitchDetectorPlugin: NSObject, FlutterPlugin {
+public class PitchDetectorPlusPlugin: NSObject, FlutterPlugin {
   public static func register(with registrar: FlutterPluginRegistrar) {
-    let channel = FlutterMethodChannel(name: "pitch_detector", binaryMessenger: registrar.messenger)
-    let instance = PitchDetectorPlugin()
+    let channel = FlutterMethodChannel(name: "pitch_detector_plus", binaryMessenger: registrar.messenger)
+    let instance = PitchDetectorPlusPlugin()
     registrar.addMethodCallDelegate(instance, channel: channel)
   }
 

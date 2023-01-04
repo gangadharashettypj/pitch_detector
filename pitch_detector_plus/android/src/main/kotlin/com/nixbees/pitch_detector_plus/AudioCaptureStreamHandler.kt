@@ -1,4 +1,4 @@
-package com.nixbees.pitch_detector
+package com.nixbees.pitch_detector_plus
 
 import android.annotation.SuppressLint
 import android.media.AudioFormat
