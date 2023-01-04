@@ -87,7 +87,7 @@
     },
     {
       "name": "pitch_detector_plus_platform_interface",
-      "rootUri": "../../pitch_detector_plus_platform_interface",
+      "rootUri": "file:///Users/gangadharashetty/.pub-cache/hosted/pub.dartlang.org/pitch_detector_plus_platform_interface-0.0.4",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -152,7 +152,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-01-04T08:45:11.190046Z",
+  "generated": "2023-01-04T18:28:06.387335Z",
   "generator": "pub",
   "generatorVersion": "2.18.5"
 }

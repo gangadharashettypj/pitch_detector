@@ -19,6 +19,5 @@ dependencies:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
-  pitch_detector_plus_platform_interface: #0.0.3
-    path: ../pitch_detector_plus_platform_interface
+  pitch_detector_plus_platform_interface: 0.0.4
 
