@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:pitch_detector/pitch_detector.dart';
+import 'package:pitch_detector/pitch_detector_plus.dart';
 import 'package:pitch_detector_dart/pitch_detector.dart' as pd;
 
 void main() {

@@ -3,14 +3,14 @@ import 'dart:async';
 import 'package:flutter/services.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
 
-class PitchDetectorPlugin {
+class PitchDetectorPlusPlugin {
   static void registerWith(Registrar registrar) {
     final MethodChannel channel = MethodChannel(
       'pitch_detector',
       const StandardMethodCodec(),
       registrar,
     );
-    final PitchDetectorPlugin instance = PitchDetectorPlugin();
+    final PitchDetectorPlusPlugin instance = PitchDetectorPlusPlugin();
     channel.setMethodCallHandler(instance.handleMethodCall);
   }
 

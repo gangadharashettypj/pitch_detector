@@ -50,13 +50,13 @@
       "languageVersion": "2.14"
     },
     {
-      "name": "pitch_detector_platform_interface",
+      "name": "pitch_detector_plus_platform_interface",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-01-04T03:50:37.526849Z",
+  "generated": "2023-01-04T04:54:27.379920Z",
   "generator": "pub",
   "generatorVersion": "2.18.5"
 }

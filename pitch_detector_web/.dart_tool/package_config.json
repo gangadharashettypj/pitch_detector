@@ -56,13 +56,13 @@
       "languageVersion": "2.14"
     },
     {
-      "name": "pitch_detector_web",
+      "name": "pitch_detector_plus_web",
       "rootUri": "../",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-01-04T03:43:58.499663Z",
+  "generated": "2023-01-04T04:55:55.837059Z",
   "generator": "pub",
   "generatorVersion": "2.18.5"
 }

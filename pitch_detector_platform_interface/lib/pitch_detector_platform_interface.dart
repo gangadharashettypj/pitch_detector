@@ -1,5 +1,5 @@
 import 'package:flutter/services.dart';
-import 'package:pitch_detector_platform_interface/method_channel_pitch_detector.dart';
+import 'package:pitch_detector_plus_platform_interface/method_channel_pitch_detector.dart';
 import 'package:plugin_platform_interface/plugin_platform_interface.dart';
 
 abstract class PitchDetectorPlatform extends PlatformInterface {
