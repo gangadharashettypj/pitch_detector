@@ -2,7 +2,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 
 /// An implementation of [PitchDetectorPlatform] that uses method channels.
-class MethodChannelPitchDetector {
+class PitchDetector {
   /// The method channel used to interact with the native platform.
   @visibleForTesting
   final methodChannel = const MethodChannel('pitch_detector');

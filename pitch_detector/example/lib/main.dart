@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
-import 'package:pitch_detector/pitch_detector_method_channel.dart';
+import 'package:pitch_detector/pitch_detector.dart';
 import 'package:pitch_detector_dart/pitch_detector.dart' as pd;
 
 void main() {
@@ -33,7 +33,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final pitchDetectorDart = MethodChannelPitchDetector();
+  final pitchDetectorDart = PitchDetector();
   final pitchDart = pd.PitchDetector(44100, 812);
   StreamSubscription? streamSub;
 
