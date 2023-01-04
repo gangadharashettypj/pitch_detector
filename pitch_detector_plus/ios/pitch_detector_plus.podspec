@@ -15,7 +15,6 @@ A new Flutter plugin project.
   s.source           = { :path => '.' }
   s.source_files = 'Classes/**/*'
   s.dependency 'Flutter'
-  s.dependency 'Beethoven'
   s.dependency 'EZAudioClone'
   s.platform = :ios, '9.0'
 

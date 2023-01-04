@@ -1,6 +1,4 @@
 PODS:
-  - Beethoven (5.0.0):
-    - Pitchy (~> 3.0)
   - EZAudioClone (0.1.6):
     - EZAudioClone/Full (= 0.1.6)
   - EZAudioClone/Core (0.1.6)
@@ -11,10 +9,8 @@ PODS:
   - flutter_audio_capture (1.1.4):
     - Flutter
   - pitch_detector_plus (0.0.1):
-    - Beethoven
     - EZAudioClone
     - Flutter
-  - Pitchy (3.0.0)
   - TPCircularBuffer (1.1)
 
 DEPENDENCIES:
@@ -24,9 +20,7 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
-    - Beethoven
     - EZAudioClone
-    - Pitchy
     - TPCircularBuffer
 
 EXTERNAL SOURCES:
@@ -38,12 +32,10 @@ EXTERNAL SOURCES:
     :path: ".symlinks/plugins/pitch_detector_plus/ios"
 
 SPEC CHECKSUMS:
-  Beethoven: e318691697c38933a69081d4bf4d2506213505fd
   EZAudioClone: e8a2c71e500600cf4cc7d4d5146725349f1e3bb5
   Flutter: f04841e97a9d0b0a8025694d0796dd46242b2854
   flutter_audio_capture: 093a201876b8065e425659d22e41d7a855fd19e7
-  pitch_detector_plus: 1ac16c08ebd537b96a2b497465ef3928b51867a6
-  Pitchy: 15407e4425b6d88fa3e7eef8927ba659fab52d7a
+  pitch_detector_plus: ece2ad6959ceeea55a4f5d426ea910457617a99d
   TPCircularBuffer: 4960a919e667280f7f38963d771f45871b64fe62
 
 PODFILE CHECKSUM: 7368163408c647b7eb699d0d788ba6718e18fb8d

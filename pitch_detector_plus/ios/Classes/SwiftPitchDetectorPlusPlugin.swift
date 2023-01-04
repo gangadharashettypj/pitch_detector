@@ -1,18 +1,15 @@
 import Flutter
-import Beethoven
 import UIKit
 import EZAudioClone
-import Beethoven
-import Pitchy
 
 public class SwiftPitchDetectorPlusPlugin: NSObject, FlutterPlugin {
     public static var channel: FlutterMethodChannel?
     public static var eventChannel: FlutterEventChannel?
     public var eventSink: FlutterEventSink?
-    public var pitchController: PitchController?
     public var microphone: EZMicrophone?
     public var fft: EZAudioFFTRolling?
-    //    let FFTViewControllerFFTWindowSize:vDSP_Length = 4096
+    private var bufferSize = 1024
+    
     public static func register(with registrar: FlutterPluginRegistrar) {
         
         channel = FlutterMethodChannel(name: "pitch_detector", binaryMessenger: registrar.messenger())
@@ -30,7 +27,7 @@ public class SwiftPitchDetectorPlusPlugin: NSObject, FlutterPlugin {
             try session.setActive(true)
             microphone = EZMicrophone(delegate: self)
             fft = EZAudioFFTRolling.fft(
-                withWindowSize: 4096,
+                withWindowSize: vDSP_Length(bufferSize * 4),
                 sampleRate: Float(microphone!.audioStreamBasicDescription().mSampleRate),
                 delegate:self
             )
@@ -48,17 +45,15 @@ public class SwiftPitchDetectorPlusPlugin: NSObject, FlutterPlugin {
             initAudio()
             let data: [String: Any] = [
                 "sampleRate" : Int(microphone!.audioStreamBasicDescription().mSampleRate),
-                "bufferSize" : 4096
+                "bufferSize" : bufferSize
             ]
             result(data)
         case .isInitialized:
             result(true)
         case .startRecording:
-            //            pitchController?.startRecording()
             microphone?.startFetchingAudio()
             result("Recording started")
         case .stopRecording:
-            //            pitchController?.stopRecording()
             microphone?.stopFetchingAudio()
             result("Recording Stopped")
         default:
@@ -68,32 +63,9 @@ public class SwiftPitchDetectorPlusPlugin: NSObject, FlutterPlugin {
     
 }
 
-
-public class PitchController {
-    let eventSink: FlutterEventSink
-    
-    init(eventSink: @escaping FlutterEventSink) {
-        self.eventSink = eventSink
-    }
-    
-    lazy var pitchEngine: PitchEngine = { [weak self] in
-        let config = Config(estimationStrategy: .yin)
-        let pitchEngine = PitchEngine(config: config,delegate: self)
-        return pitchEngine
-    }()
-    
-    public func startRecording() {
-        pitchEngine.start()
-    }
-    public func stopRecording() {
-        pitchEngine.stop()
-    }
-}
-
 extension SwiftPitchDetectorPlusPlugin: FlutterStreamHandler {
     public func onListen(withArguments arguments: Any?, eventSink events: @escaping FlutterEventSink) -> FlutterError? {
         eventSink = events
-        //        pitchController = PitchController(eventSink: events)
         return nil
     }
     
@@ -102,30 +74,6 @@ extension SwiftPitchDetectorPlusPlugin: FlutterStreamHandler {
         return nil
     }
 }
-
-
-extension PitchController: PitchEngineDelegate {
-    public func pitchEngine(_ pitchEngine: PitchEngine, didReceivePitch pitch: Pitch) {
-        let data: [String: Any] = [
-            "frequency" : pitch.frequency,
-            "noteFrequency" : pitch.note.frequency,
-            "noteLetter" : pitch.note.letter.rawValue,
-            "noteOctave" : pitch.note.octave,
-            "noteIndex" : pitch.note.index,
-            "type" : "PITCH_DATA"
-        ]
-        eventSink(data)
-    }
-    
-    public func pitchEngine(_ pitchEngine: PitchEngine, didReceiveError error: Error) {
-//        print(error)
-    }
-    
-    public func pitchEngineWentBelowLevelThreshold(_ pitchEngine: PitchEngine) {
-        //        print("Below level threshold")
-    }
-}
-
 
 extension SwiftPitchDetectorPlusPlugin: EZAudioFFTDelegate {
     public func fft(_ fft: EZAudioFFT!, updatedWithFFTData fftData: UnsafeMutablePointer<Float>!, bufferSize: vDSP_Length) {
