@@ -35,7 +35,7 @@ public class SwiftPitchDetectorPlusPlugin: NSObject, FlutterPlugin {
             print(error)
         }
     }
-    
+
     public func handle(_ call: FlutterMethodCall, result: @escaping FlutterResult) {
         
         switch(MethodChannelNames(rawValue: call.method)) {

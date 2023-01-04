@@ -43,8 +43,6 @@ class _MyHomePageState extends State<MyHomePage> {
   Map<String, int> counts = {};
 
   Future<void> _startCapture() async {
-    // await _audioRecorder.start(listener, onError,
-    //     sampleRate: 44100, bufferSize: 3000);
     print(await pitchDetectorDart.startRecording());
     streamSub = pitchDetectorDart.listenToPitchData().listen((event) {
       // print(event);
@@ -58,7 +56,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   Future<void> _stopCapture() async {
     print(await pitchDetectorDart.stopRecording());
-    // await _audioRecorder.stop();
     streamSub?.cancel();
 
     setState(() {
@@ -72,13 +69,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
     counts[DateTime.now().minute.toString() +
         DateTime.now().second.toString()] = counts[
-                DateTime.now().minute.toString() +
-                    DateTime.now().second.toString()] ==
-            null
+    DateTime.now().minute.toString() +
+        DateTime.now().second.toString()] ==
+        null
         ? 1
         : counts[DateTime.now().minute.toString() +
-                DateTime.now().second.toString()]! +
-            1;
+        DateTime.now().second.toString()]! +
+        1;
     setState(() {
       note = result.pitch.toStringAsFixed(1);
     });
@@ -99,77 +96,77 @@ class _MyHomePageState extends State<MyHomePage> {
           const Spacer(),
           Center(
               child: Text(
-            note,
-            style: const TextStyle(
-              color: Colors.black87,
-              fontSize: 105.0,
-              fontWeight: FontWeight.bold,
-            ),
-          )),
+                note,
+                style: const TextStyle(
+                  color: Colors.black87,
+                  fontSize: 105.0,
+                  fontWeight: FontWeight.bold,
+                ),
+              )),
           const Spacer(),
           Center(
               child: Text(
-            status,
-            style: const TextStyle(
-                color: Colors.black87,
-                fontSize: 14.0,
-                fontWeight: FontWeight.bold),
-          )),
+                status,
+                style: const TextStyle(
+                    color: Colors.black87,
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.bold),
+              )),
           Expanded(
               child: Row(
-            children: [
-              Expanded(
-                child: Center(
-                  child: FloatingActionButton(
-                    onPressed: () async {
-                      final data = await pitchDetectorDart.initialize();
-                      pitchDart = PitchDetector(
-                        data.sampleRate.toDouble(),
-                        data.bufferSize,
-                      );
-                    },
-                    child: const Text("Init"),
+                children: [
+                  Expanded(
+                    child: Center(
+                      child: FloatingActionButton(
+                        onPressed: () async {
+                          final data = await pitchDetectorDart.initialize();
+                          pitchDart = PitchDetector(
+                            data.sampleRate.toDouble(),
+                            data.bufferSize,
+                          );
+                        },
+                        child: const Text("Init"),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              Expanded(
-                child: Center(
-                  child: FloatingActionButton(
-                    onPressed: _startCapture,
-                    child: const Text("Start"),
+                  Expanded(
+                    child: Center(
+                      child: FloatingActionButton(
+                        onPressed: _startCapture,
+                        child: const Text("Start"),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              Expanded(
-                child: Center(
-                  child: FloatingActionButton(
-                    onPressed: _stopCapture,
-                    child: const Text("Stop"),
+                  Expanded(
+                    child: Center(
+                      child: FloatingActionButton(
+                        onPressed: _stopCapture,
+                        child: const Text("Stop"),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              Expanded(
-                child: Center(
-                  child: FloatingActionButton(
-                    onPressed: () {
-                      print(jsonEncode(counts));
-                    },
-                    child: const Text("Log"),
+                  Expanded(
+                    child: Center(
+                      child: FloatingActionButton(
+                        onPressed: () {
+                          print(jsonEncode(counts));
+                        },
+                        child: const Text("Log"),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              Expanded(
-                child: Center(
-                  child: FloatingActionButton(
-                    onPressed: () {
-                      counts.clear();
-                    },
-                    child: const Text("Clear"),
+                  Expanded(
+                    child: Center(
+                      child: FloatingActionButton(
+                        onPressed: () {
+                          counts.clear();
+                        },
+                        child: const Text("Clear"),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            ],
-          ))
+                ],
+              ))
         ]),
       ),
     );

@@ -8,7 +8,6 @@ import 'dart:js' as js;
 
 import 'package:flutter/services.dart';
 import 'package:flutter_web_plugins/flutter_web_plugins.dart';
-import 'package:pitch_detector_plus_platform_interface/model.dart';
 import 'package:pitch_detector_plus_platform_interface/pitch_detector_plus_platform_interface.dart';
 
 final controller = StreamController.broadcast();
@@ -80,14 +79,17 @@ class PitchDetectorPlusWeb extends PitchDetectorPlusPlatform {
   }
 
   @override
-  Stream listenToPitchData() {
+  Stream listen() {
     return controller.stream;
   }
 
   @override
-  Future<PitchData> initialize() async {
+  Future<Map> initialize() async {
     final sampleRate = await js.context.callMethod('getSampleRate');
-    return PitchData(sampleRate, 1024);
+    return {
+      'sampleRate': sampleRate,
+      'bufferSize': 1024,
+    };
   }
 
   @override
