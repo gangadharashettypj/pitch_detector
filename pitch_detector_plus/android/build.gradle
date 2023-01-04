@@ -1,4 +1,4 @@
-group 'com.nixbees.pitch_detector'
+group 'com.nixbees.pitch_detector_plus'
 version '1.0-SNAPSHOT'
 
 buildscript {

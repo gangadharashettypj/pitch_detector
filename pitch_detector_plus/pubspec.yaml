@@ -22,16 +22,16 @@ flutter:
   plugin:
     platforms:
       android:
-        package: com.nixbees.pitch_detector
-        pluginClass: PitchDetectorPlugin
+        package: com.nixbees.pitch_detector_plus
+        pluginClass: PitchDetectorPlusPlugin
       ios:
-        pluginClass: PitchDetectorPlugin
+        pluginClass: PitchDetectorPlusPlugin
       linux:
-        pluginClass: PitchDetectorPlugin
+        pluginClass: PitchDetectorPlusPlugin
       macos:
-        pluginClass: PitchDetectorPlugin
+        pluginClass: PitchDetectorPlusPlugin
       windows:
-        pluginClass: PitchDetectorPluginCApi
+        pluginClass: PitchDetectorPlusPluginCApi
 #      web:
 #        pluginClass: PitchDetectorWeb
 #        fileName: pitch_detector_web.dart

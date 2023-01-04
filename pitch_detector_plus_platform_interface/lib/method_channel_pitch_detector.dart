@@ -2,13 +2,13 @@ import 'dart:async';
 
 import 'package:flutter/services.dart';
 
-import 'pitch_detector_platform_interface.dart';
+import 'pitch_detector_plus_platform_interface.dart';
 
 const MethodChannel _channel = MethodChannel('pitch_detector');
 const EventChannel _eventChannel = EventChannel('pitch_detector_event_channel');
 
 /// An implementation of [PitchDetectorPlusPlatform] that uses method channels.
-class MethodChannelPitchDetector extends PitchDetectorPlusPlatform {
+class MethodChannelPitchDetectorPlus extends PitchDetectorPlusPlatform {
   /// Returns a [String] containing the version of the platform.
   @override
   Future<String?> getPlatformVersion() async {
