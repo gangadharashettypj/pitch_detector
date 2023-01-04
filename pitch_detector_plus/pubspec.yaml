@@ -1,0 +1,37 @@
+name: pitch_detector_plus
+description: This library can be used to detect pitch from mic stream
+version: 0.0.1
+homepage: https://github.com/gangadharashettypj/pitch_detector
+
+environment:
+  sdk: '>=2.18.5 <3.0.0'
+  flutter: ">=2.5.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+  pitch_detector_plus_platform_interface: 0.0.1
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^2.0.0
+
+flutter:
+  plugin:
+    platforms:
+      android:
+        package: com.nixbees.pitch_detector
+        pluginClass: PitchDetectorPlugin
+      ios:
+        pluginClass: PitchDetectorPlugin
+      linux:
+        pluginClass: PitchDetectorPlugin
+      macos:
+        pluginClass: PitchDetectorPlugin
+      windows:
+        pluginClass: PitchDetectorPluginCApi
+#      web:
+#        pluginClass: PitchDetectorWeb
+#        fileName: pitch_detector_web.dart
