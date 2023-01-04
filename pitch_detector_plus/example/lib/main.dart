@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 
 import 'package:flutter/material.dart';
 import 'package:pitch_detector_dart/pitch_detector.dart';
@@ -34,16 +35,17 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   final pitchDetectorDart = PitchDetectorPlus();
-  final pitchDart = PitchDetector(44100, 812);
+  late PitchDetector pitchDart;
   StreamSubscription? streamSub;
 
   var note = "";
   var status = "Click on start";
+  Map<String, int> counts = {};
 
   Future<void> _startCapture() async {
     // await _audioRecorder.start(listener, onError,
     //     sampleRate: 44100, bufferSize: 3000);
-    pitchDetectorDart.startRecording();
+    print(await pitchDetectorDart.startRecording());
     streamSub = pitchDetectorDart.listenToPitchData().listen((event) {
       // print(event);
       listener(List<double>.from(event['data']));
@@ -55,7 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
   }
 
   Future<void> _stopCapture() async {
-    pitchDetectorDart.stopRecording();
+    print(await pitchDetectorDart.stopRecording());
     // await _audioRecorder.stop();
     streamSub?.cancel();
 
@@ -68,7 +70,15 @@ class _MyHomePageState extends State<MyHomePage> {
   void listener(List<double> audioSample) {
     final result = pitchDart.getPitch(audioSample);
 
-    print('${DateTime.now().toString()}   ${result.pitch}');
+    counts[DateTime.now().minute.toString() +
+        DateTime.now().second.toString()] = counts[
+                DateTime.now().minute.toString() +
+                    DateTime.now().second.toString()] ==
+            null
+        ? 1
+        : counts[DateTime.now().minute.toString() +
+                DateTime.now().second.toString()]! +
+            1;
     setState(() {
       note = result.pitch.toStringAsFixed(1);
     });
@@ -91,9 +101,10 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Text(
             note,
             style: const TextStyle(
-                color: Colors.black87,
-                fontSize: 105.0,
-                fontWeight: FontWeight.bold),
+              color: Colors.black87,
+              fontSize: 105.0,
+              fontWeight: FontWeight.bold,
+            ),
           )),
           const Spacer(),
           Center(
@@ -110,8 +121,12 @@ class _MyHomePageState extends State<MyHomePage> {
               Expanded(
                 child: Center(
                   child: FloatingActionButton(
-                    onPressed: () {
-                      pitchDetectorDart.initialize();
+                    onPressed: () async {
+                      final data = await pitchDetectorDart.initialize();
+                      pitchDart = PitchDetector(
+                        data.sampleRate.toDouble(),
+                        data.bufferSize,
+                      );
                     },
                     child: const Text("Init"),
                   ),
@@ -130,6 +145,26 @@ class _MyHomePageState extends State<MyHomePage> {
                   child: FloatingActionButton(
                     onPressed: _stopCapture,
                     child: const Text("Stop"),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Center(
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      print(jsonEncode(counts));
+                    },
+                    child: const Text("Log"),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Center(
+                  child: FloatingActionButton(
+                    onPressed: () {
+                      counts.clear();
+                    },
+                    child: const Text("Clear"),
                   ),
                 ),
               ),

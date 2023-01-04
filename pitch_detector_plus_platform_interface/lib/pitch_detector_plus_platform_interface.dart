@@ -27,23 +27,23 @@ abstract class PitchDetectorPlusPlatform extends PlatformInterface {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
-  Future<String?> getPlatformVersion() {
+  Future<String> getPlatformVersion() {
     throw UnimplementedError('platformVersion() has not been implemented.');
   }
 
-  Future<String?> startRecording() {
+  Future<String> startRecording() {
     throw UnimplementedError('startRecording() has not been implemented.');
   }
 
-  Future<String?> stopRecording() {
+  Future<String> stopRecording() {
     throw UnimplementedError('stopRecording() has not been implemented.');
   }
 
-  Stream listenToPitchData() {
+  Stream listen() {
     throw UnimplementedError('listenToPitchData() has not been implemented.');
   }
 
-  Future<String?> initialize() async {
+  Future<Map> initialize() async {
     throw UnimplementedError('initialize() has not been implemented.');
   }
 

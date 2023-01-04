@@ -10,7 +10,8 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  pitch_detector_plus_platform_interface: 0.0.2
+  pitch_detector_plus_platform_interface: #0.0.3
+    path: ../pitch_detector_plus_platform_interface
 
 
 dev_dependencies:

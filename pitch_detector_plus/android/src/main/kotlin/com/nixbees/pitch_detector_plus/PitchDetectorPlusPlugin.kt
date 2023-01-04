@@ -35,8 +35,10 @@ class PitchDetectorPlusPlugin: FlutterPlugin, MethodCallHandler, EventChannel.St
         result.success("Android ${android.os.Build.VERSION.RELEASE}")
       }
       "initialize" -> {
-
-        result.success("Initialised")
+        result.success(mapOf(
+          "sampleRate" to audioCaptureStreamHandler.sampleRate,
+          "bufferSize" to audioCaptureStreamHandler.bufferSize,
+        ))
       }
       "isInitialized" -> {
         result.success(tarosDspInitialized)

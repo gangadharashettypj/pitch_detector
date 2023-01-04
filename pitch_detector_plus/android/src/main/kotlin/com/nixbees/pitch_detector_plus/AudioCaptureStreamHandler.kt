@@ -12,11 +12,12 @@ import io.flutter.plugin.common.EventChannel.EventSink
 class AudioCaptureStreamHandler {
     private var actualSampleRate: Int = 0
     private var audioSource: Int = MediaRecorder.AudioSource.DEFAULT
-    private var sampleRate: Int = 44100
     private var isCapturing: Boolean = false
     private var thread: Thread? = null
     private var _events: EventSink? = null
     private val uiThreadHandler: Handler = Handler(Looper.getMainLooper())
+    val sampleRate: Int = 44100
+    val bufferSize: Int = 812
 
     companion object {
         private const val TAG: String = "AudioCaptureStream"
@@ -24,11 +25,11 @@ class AudioCaptureStreamHandler {
         private const val AUDIO_FORMAT = AudioFormat.ENCODING_PCM_FLOAT
     }
 
-    fun setEventSink(sink: EventSink){
+    fun setEventSink(sink: EventSink) {
         _events = sink
     }
 
-     fun startRecording() {
+    fun startRecording() {
         if (thread != null) return
 
         isCapturing = true
@@ -37,7 +38,7 @@ class AudioCaptureStreamHandler {
         thread?.start()
     }
 
-     fun stopRecording() {
+    fun stopRecording() {
         if (thread == null) return
         isCapturing = false
 
@@ -61,10 +62,12 @@ class AudioCaptureStreamHandler {
 
             override fun run() {
                 if (isCapturing) {
-                    _events?.success(mapOf(
-                        "data" to audioBuffer[index],
-                        "type" to "PITCH_RAW_DATA"
-                    ))
+                    _events?.success(
+                        mapOf(
+                            "data" to audioBuffer[index],
+                            "type" to "PITCH_RAW_DATA"
+                        )
+                    )
                 }
             }
 
@@ -80,7 +83,7 @@ class AudioCaptureStreamHandler {
     private fun record() {
         android.os.Process.setThreadPriority(android.os.Process.THREAD_PRIORITY_AUDIO)
 
-        val bufferSize: Int = 812//AudioRecord.getMinBufferSize(sampleRate, CHANNEL_CONFIG, AUDIO_FORMAT)
+//        val bufferSize: Int = 812//AudioRecord.getMinBufferSize(sampleRate, CHANNEL_CONFIG, AUDIO_FORMAT)
         val bufferCount = 2
         var bufferIndex = 0
         val audioBuffer = ArrayList<FloatArray>()

@@ -49,10 +49,10 @@ packages:
   pitch_detector_plus_platform_interface:
     dependency: "direct main"
     description:
-      name: pitch_detector_plus_platform_interface
-      url: "https://pub.dartlang.org"
-    source: hosted
-    version: "0.0.2"
+      path: "../pitch_detector_plus_platform_interface"
+      relative: true
+    source: path
+    version: "0.0.3"
   plugin_platform_interface:
     dependency: transitive
     description:

@@ -46,7 +46,11 @@ public class SwiftPitchDetectorPlusPlugin: NSObject, FlutterPlugin {
             result("iOS " + UIDevice.current.systemVersion)
         case .initialize:
             initAudio()
-            result("initialized")
+            let data: [String: Any] = [
+                "sampleRate" : Int(microphone!.audioStreamBasicDescription().mSampleRate),
+                "bufferSize" : 4096
+            ]
+            result(data)
         case .isInitialized:
             result(true)
         case .startRecording:
@@ -114,12 +118,7 @@ extension PitchController: PitchEngineDelegate {
     }
     
     public func pitchEngine(_ pitchEngine: PitchEngine, didReceiveError error: Error) {
-        print(">>>>>")
-        print(error)
-        //        eventSink([
-        //            "error" : error,
-        //            "type" : "PITCH_ERROR"
-        //        ])
+//        print(error)
     }
     
     public func pitchEngineWentBelowLevelThreshold(_ pitchEngine: PitchEngine) {

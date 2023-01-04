@@ -11,7 +11,7 @@ flutter:
   plugin:
     platforms:
       web:
-        pluginClass: PitchDetectorPlusPlugin
+        pluginClass: PitchDetectorPlusWeb
         fileName: pitch_detector_plus_web.dart
 
 dependencies:
@@ -19,5 +19,6 @@ dependencies:
     sdk: flutter
   flutter_web_plugins:
     sdk: flutter
-  pitch_detector_plus_platform_interface: 0.0.2
+  pitch_detector_plus_platform_interface: #0.0.3
+    path: ../pitch_detector_plus_platform_interface
 

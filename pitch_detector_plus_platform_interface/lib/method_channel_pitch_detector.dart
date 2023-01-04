@@ -11,36 +11,36 @@ const EventChannel _eventChannel = EventChannel('pitch_detector_event_channel');
 class MethodChannelPitchDetectorPlus extends PitchDetectorPlusPlatform {
   /// Returns a [String] containing the version of the platform.
   @override
-  Future<String?> getPlatformVersion() async {
+  Future<String> getPlatformVersion() async {
     final version = await _channel.invokeMethod('getPlatformVersion');
     return version;
   }
 
   /// Returns a [String] containing the status of the recording.
   @override
-  Future<String?> startRecording() async {
+  Future<String> startRecording() async {
     final status = await _channel.invokeMethod('startRecording');
     return status;
   }
 
   /// Returns a [String] containing the status of the recording.
   @override
-  Future<String?> stopRecording() async {
+  Future<String> stopRecording() async {
     final status = await _channel.invokeMethod('stopRecording');
     return status;
   }
 
   @override
-  Stream listenToPitchData() {
+  Stream listen() {
     return _eventChannel
         .receiveBroadcastStream()
         .where((event) => event is Map && event['type'] == 'PITCH_RAW_DATA');
   }
 
   @override
-  Future<String?> initialize() async {
-    final status = await _channel.invokeMethod<String>('initialize');
-    return status;
+  Future<Map> initialize() async {
+    final status = await _channel.invokeMethod<Map>('initialize');
+    return status!;
   }
 
   @override
