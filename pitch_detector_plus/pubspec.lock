@@ -60,6 +60,18 @@ packages:
     description: flutter
     source: sdk
     version: "0.0.0"
+  flutter_web_plugins:
+    dependency: transitive
+    description: flutter
+    source: sdk
+    version: "0.0.0"
+  js:
+    dependency: transitive
+    description:
+      name: js
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.6.4"
   lints:
     dependency: transitive
     description:
@@ -101,7 +113,14 @@ packages:
       name: pitch_detector_plus_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.4"
+    version: "0.0.5"
+  pitch_detector_plus_web:
+    dependency: "direct main"
+    description:
+      name: pitch_detector_plus_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.5"
   plugin_platform_interface:
     dependency: transitive
     description:

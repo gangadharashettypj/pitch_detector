@@ -253,14 +253,14 @@ packages:
       name: pitch_detector_plus_platform_interface
       url: "https://pub.dartlang.org"
     source: hosted
-    version: "0.0.4"
+    version: "0.0.5"
   pitch_detector_plus_web:
-    dependency: "direct main"
+    dependency: transitive
     description:
-      path: "../../pitch_detector_plus_web"
-      relative: true
-    source: path
-    version: "0.0.4"
+      name: pitch_detector_plus_web
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "0.0.5"
   plugin_platform_interface:
     dependency: transitive
     description:
