@@ -88,7 +88,7 @@ class PitchDetectorPlusWeb extends PitchDetectorPlusPlatform {
     final sampleRate = await js.context.callMethod('getSampleRate');
     return {
       'sampleRate': sampleRate,
-      'bufferSize': 1024,
+      'bufferSize': 2048,
     };
   }
 

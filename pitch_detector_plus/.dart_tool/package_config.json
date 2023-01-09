@@ -105,7 +105,7 @@
     },
     {
       "name": "pitch_detector_plus_web",
-      "rootUri": "file:///Users/gangadharashetty/.pub-cache/hosted/pub.dartlang.org/pitch_detector_plus_web-0.0.5",
+      "rootUri": "file:///Users/gangadharashetty/.pub-cache/hosted/pub.dartlang.org/pitch_detector_plus_web-0.0.6",
       "packageUri": "lib/",
       "languageVersion": "2.18"
     },
@@ -170,7 +170,7 @@
       "languageVersion": "2.18"
     }
   ],
-  "generated": "2023-01-07T21:59:31.042482Z",
+  "generated": "2023-01-09T12:00:54.420958Z",
   "generator": "pub",
   "generatorVersion": "2.18.5"
 }

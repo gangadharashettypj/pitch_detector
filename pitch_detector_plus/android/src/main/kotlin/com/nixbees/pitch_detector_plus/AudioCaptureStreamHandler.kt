@@ -17,7 +17,7 @@ class AudioCaptureStreamHandler {
     private var _events: EventSink? = null
     private val uiThreadHandler: Handler = Handler(Looper.getMainLooper())
     val sampleRate: Int = 44100
-    val bufferSize: Int = 812
+    val bufferSize: Int = 1120
 
     companion object {
         private const val TAG: String = "AudioCaptureStream"

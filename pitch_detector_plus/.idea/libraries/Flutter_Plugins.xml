@@ -2,6 +2,7 @@
   <library name="Flutter Plugins" type="FlutterPluginsLibraryType">
     <CLASSES>
       <root url="file://$PROJECT_DIR$" />
+      <root url="file://$USER_HOME$/.pub-cache/hosted/pub.dartlang.org/pitch_detector_plus_web-0.0.5" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

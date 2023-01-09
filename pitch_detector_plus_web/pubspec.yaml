@@ -1,6 +1,6 @@
 name: pitch_detector_plus_web
 description: This library can be used to detect pitch from mic stream in web
-version: 0.0.5
+version: 0.0.6
 homepage: https://github.com/gangadharashettypj/pitch_detector/tree/master/pitch_detector_web
 
 environment:
